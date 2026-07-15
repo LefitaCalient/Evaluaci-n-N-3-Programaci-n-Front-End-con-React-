@@ -5,7 +5,7 @@ function FormularioDesembarque({
   editando
 }) {
   return (
-    <form onSubmit={guardarDesembarque}>
+    <form className="formulario" onSubmit={guardarDesembarque}>
 
       <input
         name="especie"

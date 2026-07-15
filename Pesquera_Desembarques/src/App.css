@@ -189,3 +189,18 @@ select {
 .formulario select {
   width: 150px;
 }
+
+.formulario button {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.formulario button:hover {
+  background-color: #005f8f;
+}

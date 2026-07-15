@@ -18,12 +18,14 @@ function App() {
   const [busqueda, setBusqueda] = useState("");
   const [estadoFiltro, setEstadoFiltro] = useState("todos");
   const [prioritarios, setPrioritarios] = useState(() => {
-    const guardados = localStorage.getItem("prioritarios");
+  const guardados = localStorage.getItem("prioritarios");
 
     return guardados
       ? JSON.parse(guardados)
       : [];
   });
+
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     obtenerDesembarques();
@@ -31,9 +33,7 @@ function App() {
 
   const obtenerDesembarques = async () => {
     try {
-      const respuesta = await fetch(
-        `${import.meta.env.VITE_API_URL}/desembarques`
-);
+      const respuesta = await fetch(`${API_URL}/desembarques`);
 
       if (!respuesta.ok) {
         throw new Error("Error al obtener datos");
@@ -52,7 +52,7 @@ function App() {
 const eliminarDesembarque = async (id) => {
   try {
     await fetch(
-      `${import.meta.env.VITE_API_URL}/desembarques/${id}`,
+      `${API_URL}/desembarques/${id}`,
       {
         method: "DELETE",
       }
@@ -108,7 +108,7 @@ if (Number(nuevo.kilos) <= 0) {
 
   try {
     const respuesta = await fetch(
-      `${import.meta.env.VITE_API_URL}/desembarques/${editando}`,
+      `${API_URL}/desembarques/${editando}`,
       {
         method: "PUT",
         headers: {
@@ -166,7 +166,7 @@ if (Number(nuevo.kilos) <= 0) {
 
   try {
     const respuesta = await fetch(
-      `${import.meta.env.VITE_API_URL}/desembarques`,
+      `${API_URL}/desembarques`,
       {
         method: "POST",
         headers: {
